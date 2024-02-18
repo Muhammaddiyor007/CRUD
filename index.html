@@ -1,190 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CRUD</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-  </head>
 
-  <body>
-    <div class="container">
-      <div class="input-group my-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Searching student by name..."
-        />
-        <div class="input-group-text">
-          <select class="form-select filter-group-select"></select>
-        </div>
-        <button
-          class="btn btn-outline-success add-student-btn"
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#student-modal"
-        >
-          Add student
-        </button>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRUD</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="crud.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="input-group my-3">
+      <input type="text" class="form-control" placeholder="Searching student by name..." />
+      <div class="input-group-text">
+        <select class="form-select filter-group-select"></select>
       </div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">FirstName</th>
-            <th scope="col">LastName</th>
-            <th scope="col">Address</th>
-            <th scope="col">position</th>
-            <th scope="col">typePosition</th>
-            <th scope="col">salary</th>
-            <th scope="col" class="text-end">isMarried</th>
-          </tr>
-        </thead>
-        <tbody class="students-row"></tbody>
-      </table>
-      <div class="modal fade" id="student-modal">
-        <form class="student-form" novalidate>
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  Student data
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <div class="mb-3">
-                  <label for="firstName" class="form-label">Firstname</label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control"
-                    id="firstName"
-                    placeholder="Firstname"
-                  />
-                  <div class="valid-feedback">Thank you for filling !</div>
-                  <div class="invalid-feedback">Please fill this field !</div>
-                </div>
-                <div class="mb-3">
-                  <label for="lastName" class="form-label">Lastname</label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control"
-                    id="lastName"
-                    placeholder="Lastname"
-                  />
-                  <div class="valid-feedback">Thank you for filling !</div>
-                  <div class="invalid-feedback">Please fill this field !</div>
-                </div>
-                <div class="mb-3">
-                  <label for="lastName" class="form-label">Address</label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control"
-                    id="address"
-                    placeholder="Address"
-                  />
-                  <div class="valid-feedback">Thank you for filling !</div>
-                  <div class="invalid-feedback">Please fill this field !</div>
-                </div>
-                <div class="mb-3">
-                  <label for="group" class="form-label">Select position</label>
-                  <select
-                    required
-                    id="position"
-                    class="form-select position-select"
-                  >
-                    <option value="Frontend">Frontend</option>
-                    <option value="Backend">Backend</option>
-                    <option value="Fullstack">Fullstack</option>
-                  </select>
-                  <div class="valid-feedback">Thank you for filling !</div>
-                  <div class="invalid-feedback">Please fill this field !</div>
-                </div>
-                <div class="mb-3">
-                  <label for="group" class="form-label"
-                    >Select typeposition</label
-                  >
-                  <select
-                    required
-                    id="typePosition"
-                    class="form-select typeposition-select"
-                  >
-                    <option value="Junior">Junior</option>
-                    <option value="Middle">Middle</option>
-                    <option value="Senior">Senior</option>
-                  </select>
-                  <div class="valid-feedback">Thank you for filling !</div>
-                  <div class="invalid-feedback">Please fill this field !</div>
-                </div>
-                <div class="mb-3">
-                  <label for="salary" class="form-label">Salary</label>
-                  <input
-                    required
-                    type="number"
-                    class="form-control"
-                    id="salary"
-                    placeholder="salary"
-                  />
-                  <div class="valid-feedback">Thank you for filling !</div>
-                  <div class="invalid-feedback">Please fill this field !</div>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="isMarried"
-                  />
-                  <label class="form-check-label" for="isMarried">
-                    Is Married ?
-                  </label>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="submit" class="btn btn-primary save-btn">
-                  Add student
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal fade" id="confirm-modal">
+      <button class="btn btn-outline-success add-student-btn" type="button" data-bs-toggle="modal"
+        data-bs-target="#student-modal">
+        Add student
+      </button>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">FirstName</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Address</th>
+          <th scope="col">birthDay</th>
+          <th scope="col">position</th>
+          <th scope="col">typePosition</th>
+          <th scope="col">salary</th>
+          <th scope="col" class="text-end">isMarried</th>
+        </tr>
+      </thead>
+      <tbody class="students-row"></tbody>
+    </table>
+    <div class="modal fade" id="student-modal">
+      <form class="student-form" novalidate>
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">Do you want to delet this student ?</div>
-            <div class="modal-footer">
-              <button class="btn btn-success yes-btn">Yes</button>
-              <button class="btn btn-primary no-btn">No</button>
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Student data
+              </h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="firstName" class="form-label">Firstname</label>
+                <input required type="text" class="form-control" id="firstName" placeholder="Firstname" />
+                <div class="valid-feedback">Thank you for filling !</div>
+                <div class="invalid-feedback">Please fill this field !</div>
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Lastname</label>
+                <input required type="text" class="form-control" id="lastName" placeholder="Lastname" />
+                <div class="valid-feedback">Thank you for filling !</div>
+                <div class="invalid-feedback">Please fill this field !</div>
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Address</label>
+                <input required type="text" class="form-control" id="address" placeholder="Address" />
+                <div class="valid-feedback">Thank you for filling !</div>
+                <div class="invalid-feedback">Please fill this field !</div>
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">birthDay</label>
+                <input required type="date" class="form-control" id="birthDay" placeholder="Birthday" />
+                <div class="valid-feedback">Thank you for filling !</div>
+                <div class="invalid-feedback">Please fill this field !</div>
+              </div>
+              <div class="mb-3">
+                <label for="group" class="form-label">Select position</label>
+                <select required id="position" class="form-select position-select">
+                  <option value="Frontend">Frontend</option>
+                  <option value="Backend">Backend</option>
+                  <option value="Fullstack">Fullstack</option>
+                </select>
+                <div class="valid-feedback">Thank you for filling !</div>
+                <div class="invalid-feedback">Please fill this field !</div>
+              </div>
+              <div class="mb-3">
+                <label for="group" class="form-label">Select typeposition</label>
+                <select required id="typePosition" class="form-select typeposition-select">
+                  <option value="Junior">Junior</option>
+                  <option value="Middle">Middle</option>
+                  <option value="Senior">Senior</option>
+                </select>
+                <div class="valid-feedback">Thank you for filling !</div>
+                <div class="invalid-feedback">Please fill this field !</div>
+              </div>
+              <div class="mb-3">
+                <label for="salary" class="form-label">Salary</label>
+                <input required type="number" class="form-control" id="salary" placeholder="salary" />
+                <div class="valid-feedback">Thank you for filling !</div>
+                <div class="invalid-feedback">Please fill this field !</div>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="isMarried" />
+                <label class="form-check-label" for="isMarried">
+                  Is Married ?
+                </label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary save-btn">
+                Add student
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal fade" id="confirm-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">Do you want to delet this student ?</div>
+          <div class="modal-footer">
+            <button class="btn btn-success yes-btn">Yes</button>
+            <button class="btn btn-primary no-btn">No</button>
           </div>
         </div>
       </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/const.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="js/const.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>

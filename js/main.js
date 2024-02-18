@@ -18,7 +18,7 @@ positions.map((pr) => {
 });
 
 function getStudentRow(
-  { firstName, lastName, address, position, typePosition, salary, isMarried },
+  { firstName, lastName, address,birthDay, position, typePosition, salary, isMarried },
   i
 ) {
   return `
@@ -27,6 +27,7 @@ function getStudentRow(
       <td>${firstName}</td>
       <td>${lastName}</td>
       <td>${address}</td>
+      <td>${birthDay}</td>
       <td>${position}</td>
       <td>${typePosition}</td>
       <td>${salary}$</td>
@@ -69,6 +70,7 @@ studentForm.addEventListener("submit", function (e) {
   const firstName = studentFormElements.firstName.value;
   const lastName = studentFormElements.lastName.value;
   const address = studentFormElements.address.value;
+  const birthDay = studentFormElements.birthDay.value
   const position = studentFormElements.position.value;
   const typePosition = studentFormElements.typePosition.value;
   const salary = studentFormElements.salary.value;
@@ -78,6 +80,7 @@ studentForm.addEventListener("submit", function (e) {
     firstName,
     lastName,
     address,
+    birthDay,
     position,
     typePosition,
     salary,
@@ -122,6 +125,7 @@ function editStudent(i) {
     lastName,
     address,
     position,
+    birthDay,
     typePosition,
     salary,
     isMarried,
@@ -130,6 +134,7 @@ function editStudent(i) {
   studentFormElements.firstName.value = firstName;
   studentFormElements.lastName.value = lastName;
   studentFormElements.address.value = address;
+  studentFormElements.birthDay.value = birthDay;
   studentFormElements.position.value = position;
   studentFormElements.typePosition.value = typePosition;
   studentFormElements.salary.value = salary;
